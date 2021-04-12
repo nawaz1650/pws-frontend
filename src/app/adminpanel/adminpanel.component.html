@@ -1,0 +1,50 @@
+<div fxLayoutAlign="center">
+    <mat-form-field>
+        <input matInput placeholder="Filter" (keyup)="doFilter($event.target.value)">
+    </mat-form-field>
+    <button (click)="export()" mat-button color="primary" type="button">Export</button>
+</div>
+<div fxLayoutAlign="center center" >
+<div class="mat-elevation-z8" style="width: 75%;height: 100%;" >
+<mat-table [dataSource]="orders" matSort class="mat-elevation-z8">
+    <ng-container matColumnDef="user_id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>User id
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.user_id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="mobile">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>mobile
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.mobile}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="order_id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Order id
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.order_id}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="qty">
+        <mat-header-cell *matHeaderCellDef>Quantity
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.qty}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef>Address
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.address}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="created_date">
+        <mat-header-cell *matHeaderCellDef>Ordered on
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.created_date|date}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="order_date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>For date
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.order_date|date}}</mat-cell>
+    </ng-container>
+<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+<mat-row *matRowDef="let row; columns:displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[5, 7, 9]" showFirstLastButtons></mat-paginator>
+</div>
+</div>

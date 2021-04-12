@@ -1,0 +1,33 @@
+<div fxLayout fxLayoutAlign="center center" style="height: 50%;margin-top: 30px;">
+    <mat-card fxFlex.sm="70%" fxFlex.gt-sm="40%">
+        <form fxLayout="column" (ngSubmit)="submit()" #form="ngForm" >
+        <mat-form-field>
+            <input matInput [(ngModel)]="count" name="qty"  readonly type="number"  >
+            <button style="padding:0px !important" type='button' mat-button color="primary" matSuffix (click)="add()"><mat-icon >add</mat-icon></button>
+            <button  [disabled]="count==1" mat-button type='button' color="primary" matSuffix (click)="remove()"><mat-icon>remove</mat-icon></button>
+        </mat-form-field>
+        <mat-form-field>
+            <input ngModel name="address" matInput placeholder="Address" required>
+        </mat-form-field>
+        <mat-form-field >
+            <input
+              matInput
+              required
+              [matDatepicker]="picker"
+              placeholder="order date"
+              ngModel
+              name="date"
+              [min]="minDate"
+            />
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Order date is required.</mat-error>
+          </mat-form-field>
+        <button [disabled]="!form.valid" mat-raised-button color="primary" type="submit">Place order</button>
+    </form>
+    </mat-card>
+</div>
+<!-- ngModel name="qty"
+ngModel name="address"
+(ngSubmit)="submit()" #form="ngForm" -->
+<!-- [disabled]="!form.valid" -->

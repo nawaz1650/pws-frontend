@@ -1,0 +1,12 @@
+<mat-nav-list>
+    <a  (click)="sidenavlinkclicked()" mat-list-item routerLink='/order'>
+        <mat-icon>input</mat-icon> <span class="cptn">order</span></a>
+        <a (click)="sidenavlinkclicked()" mat-list-item routerLink="/history" 
+    ><mat-icon>face</mat-icon><span class="cptn"> History</span></a
+  >
+
+  <a (click)="sidenavlinkclicked()" mat-list-item routerLink='/admin'>
+    <mat-icon>face</mat-icon> <span class="cptn">Admin panel</span></a>
+  <a (click)="sidenavlinkclicked()" mat-list-item routerLink='/feedback'>
+    <mat-icon>input</mat-icon> <span class="cptn">Feedback</span></a>
+</mat-nav-list>
