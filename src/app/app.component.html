@@ -1,3 +1,4 @@
+
 <app-toolbar (sidenavEmitter)="sidenav.toggle()"></app-toolbar>
 <mat-sidenav-container style="height:100%;">
   <mat-sidenav #sidenav  >
@@ -7,3 +8,5 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<ng-http-loader spinner="sk-rotationg-plane" backgroundColor="#3f51b5" [minDuration]="1000" [extraDuration]="800">
+</ng-http-loader>

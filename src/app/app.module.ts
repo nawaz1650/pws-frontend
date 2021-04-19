@@ -17,6 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HistoryComponent } from './history/history.component';
 import { AdminComponent } from './admin/admin.component';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AdminpanelComponent } from './adminpanel/adminpanel.component';
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AdminpanelComponent } from './adminpanel/adminpanel.component';
       apiKey:'AIzaSyBnO8lFIqDet_0tB0sbnW9sD_-zNrrc0Ms',
     
     }),
-    MaterialModule,HttpClientModule
+    MaterialModule,HttpClientModule,
+    NgHttpLoaderModule.forRoot()
   ],
   providers: [
     {provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}

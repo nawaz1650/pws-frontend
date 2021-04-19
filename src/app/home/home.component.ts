@@ -29,12 +29,19 @@ verifysubs:Subscription;
 submit(){
 console.log(this.otpForm.value);
 if(this.mobilemode){
-this.generatesubs=this.httpSer.generateOtp(this.otpForm.value.mobile).subscribe(res=>{
+this.generatesubs=this.httpSer.generateOtp(this.otpForm.value.mobile)
+.subscribe(res=>{
   console.log(res);
   this.mobilemode=false;
   this.otpmode=true;
   this.generatesubs.unsubscribe();
   this.openSnackBar("One time password has been sent to your mobile via SMS ,please input that OTP!!",null);
+},err=>{
+  console.log("from gnrt otp err observer ",err);
+  if(err.error.message)
+  this.openSnackBar("Entered number is not a valid number",null);
+  else
+  this.openSnackBar("some thing went wrong..",null);
 });
 }else if(this.otpmode){
   this.verifysubs=
