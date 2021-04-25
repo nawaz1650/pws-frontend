@@ -22,8 +22,8 @@ ordersAdmin:ExportAdmin[];
   generateOtp(mobile:string){
     console.log(mobile);
     return this.http.post<any>
-    ('http://localhost:8080/generateOtp',{"mobile":mobile})
-    // ('https://pwss.herokuapp.com/generateOtp',{"mobile":mobile})
+    // ('http://localhost:8080/generateOtp',{"mobile":mobile})
+    ('https://pwss.herokuapp.com/generateOtp',{"mobile":mobile})
     
     .pipe(map(
       (res)=>{
@@ -41,8 +41,8 @@ ordersAdmin:ExportAdmin[];
   generateAdminOtp(mobile:string){
     console.log(mobile);
     return this.http.post<any>
-    ('http://localhost:8080/adminlogin',{"mobile":mobile})
-    // ('https://pwss.herokuapp.com/adminlogin',{"mobile":mobile})
+    // ('http://localhost:8080/adminlogin',{"mobile":mobile})
+    ('https://pwss.herokuapp.com/adminlogin',{"mobile":mobile})
     .pipe(map(
       (res)=>{
         console.log("response from http serv success ",res);
@@ -56,8 +56,8 @@ ordersAdmin:ExportAdmin[];
     );
   }
   verifyOtp(mobile:string,otp:string){
-    return this.http.post<any>('http://localhost:8080/verifyOtp',{
-      // return this.http.post<any>('https://pwss.herokuapp.com/verifyOtp',{
+    // return this.http.post<any>('http://localhost:8080/verifyOtp',{
+      return this.http.post<any>('https://pwss.herokuapp.com/verifyOtp',{
       mobile:mobile,otp:otp
     }).pipe(
       map((res)=>{
@@ -74,8 +74,8 @@ ordersAdmin:ExportAdmin[];
     )
   }
   placeOrder(qty:number,timestamp:string,address:string){
-    return this.http.post<any>('http://localhost:8080/createOrder',{
-      // return this.http.post<any>('https://pwss.herokuapp.com/createOrder',{
+    // return this.http.post<any>('http://localhost:8080/createOrder',{
+      return this.http.post<any>('https://pwss.herokuapp.com/createOrder',{
       qty:qty,timestamp:timestamp,address:address
     }).pipe(
       map((res)=>{
@@ -92,8 +92,8 @@ ordersAdmin:ExportAdmin[];
     )
   }
   getOrders(){
-    return this.http.get<Order[]>('http://localhost:8080/orders').pipe(
-      // return this.http.get<Order[]>('https://pwss.herokuapp.com/orders').pipe(
+    // return this.http.get<Order[]>('http://localhost:8080/orders').pipe(
+      return this.http.get<Order[]>('https://pwss.herokuapp.com/orders').pipe(
       map((res)=>{
         console.log("from orders  success ",res);
           this.orders=res;
@@ -108,8 +108,8 @@ ordersAdmin:ExportAdmin[];
   }
 
   getOrdersAdmin(){
-    return this.http.get<ExportAdmin[]>('http://localhost:8080/ordersforadmin').pipe(
-      // return this.http.get<ExportAdmin[]>('https://pwss.herokuapp.com/ordersforadmin').pipe(
+    // return this.http.get<ExportAdmin[]>('http://localhost:8080/ordersforadmin').pipe(
+      return this.http.get<ExportAdmin[]>('https://pwss.herokuapp.com/ordersforadmin').pipe(
       map((res)=>{
         console.log("from orders  success ",res);
           this.ordersAdmin=res;
@@ -125,8 +125,8 @@ ordersAdmin:ExportAdmin[];
 
 
   export(){
-    this.http.get('http://localhost:8080/export',{responseType:"blob",}).pipe(
-      // this.http.get('https://pwss.herokuapp.com/export',{responseType:"blob",}).pipe(
+    // this.http.get('http://localhost:8080/export',{responseType:"blob",}).pipe(
+      this.http.get('https://pwss.herokuapp.com/export',{responseType:"blob",}).pipe(
       map(
       (res)=>{
           const blob=new Blob([res],{type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
@@ -153,8 +153,8 @@ ordersAdmin:ExportAdmin[];
 
 
       exportAdmin(){
-        this.http.get('http://localhost:8080/exportAdmin',{responseType:"blob",}).pipe(
-          // this.http.get('https://pwss.herokuapp.com/exportAdmin',{responseType:"blob",}).pipe(
+        // this.http.get('http://localhost:8080/exportAdmin',{responseType:"blob",}).pipe(
+          this.http.get('https://pwss.herokuapp.com/exportAdmin',{responseType:"blob",}).pipe(
           map(
           (res)=>{
               const blob=new Blob([res],{type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
